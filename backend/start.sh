@@ -20,9 +20,4 @@ User.objects.filter(username="admin").exists() or \
     User.objects.create_superuser("admin", "admin@example.com", "admin")
 EOF
 
-# Start Gunicorn processes.
-echo Starting Gunicorn.
-exec gunicorn api.wsgi:application \
-    --bind 0.0.0.0:8000 \
-    --workers 2
-    --capture-output --enable-stdio-inheritance --log-level=debug --access-logfile=- --log-file=-
+python manage.py runserver 
