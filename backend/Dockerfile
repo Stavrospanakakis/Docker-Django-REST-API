@@ -5,7 +5,7 @@ ARG UID
 ARG GID
 
 #Create User
-RUN groupadd -r serveruser -g $GID && useradd -ms /bin/bash serveruser -u $UID -g $GID
+RUN groupadd -r serveruser -g ${GID} && useradd -ms /bin/bash serveruser -u ${UID} -g ${GID}
 
 # Install packages 
 
