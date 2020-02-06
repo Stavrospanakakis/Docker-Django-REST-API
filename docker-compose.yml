@@ -1,0 +1,32 @@
+version: "3"
+services: 
+    server:
+        build: 
+            context: ./server
+        container_name: server
+        ports: 
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./data/backend/static:/home/serveruser/project/api/static
+            - apache_logs:/var/log/apache2
+        depends_on: 
+            - backend
+    backend:
+        build:
+            context: ./backend
+            args:
+                UID: ${USER_ID}
+                GID: ${GROUP_ID}
+        container_name: backend
+        ports: 
+            - "8000:8000"
+        volumes:
+            - ./data/backend:/home/serveruser/project
+            - backend-logs:/home/serveruser/logs 
+
+volumes:
+    apache_logs:
+    backend-logs:
+    
+            
