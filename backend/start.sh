@@ -20,5 +20,4 @@ User.objects.filter(username="admin").exists() or \
     User.objects.create_superuser("admin", "admin@example.com", "admin")
 EOF
 
-#Start Server
-python manage.py runserver 
+python ./manage.py runserver 0.0.0.0:8000
