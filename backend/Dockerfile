@@ -8,12 +8,11 @@ ARG GID
 RUN groupadd -r serveruser -g ${GID} && useradd -ms /bin/bash serveruser -u ${UID} -g ${GID}
 
 # Install packages 
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
   python3-minimal python3-setuptools python3-pip netcat && \
   rm -f /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python && \
   rm -f /usr/bin/pip && ln -s /usr/bin/pip3 /usr/bin/pip && \
-  pip install django djangorestframework django-filter 
+  pip install django djangorestframework django-filter django-rest-knox
 
 # Copy script.
 COPY start.sh /home/serveruser/start.sh

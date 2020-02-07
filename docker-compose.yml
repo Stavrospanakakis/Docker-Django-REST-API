@@ -23,10 +23,10 @@ services:
             - "8000:8000"
         volumes:
             - ./data/backend:/home/serveruser/project
-            - backend-logs:/home/serveruser/logs 
+            - backend_logs:/home/serveruser/logs 
 
 volumes:
     apache_logs:
-    backend-logs:
+    backend_logs:
     
             
